@@ -1,0 +1,105 @@
+<!doctype html>
+<html ng-app="pokerApp">
+  <head>
+    <title>KenPoker</title>
+
+  </head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="init.js"></script>
+  <script src="index.js"></script>
+  <script src="chat-post.component.js"></script>
+  <script src="chat-box.component.js"></script>
+
+  <body>
+    <div ng-controller="MyAuthCtrl">
+    <button onclick="signOut()">Log out</button>
+    <p id="myId">My id:</p>
+    <p id="balance">Balance:</p>
+    
+    <p id=>Pot: <span id="pot"></span></p>
+    
+    <div class="container">
+      <div class="row">
+        <div style="background:#f99" class="col-xs-3 col-xs-offset-3">
+          <button class="btn btn-secondary float-right" style="display:none" id="seat0">Take seat</button>
+          <p id="seat0info"></p>
+          <div class="cards_box">
+            <img alt="card" id="seat0_card0" class="players_cards" src="imgs/gray_back.png">
+            <img alt="card" id="seat0_card1" class="players_cards" src="imgs/gray_back.png">
+          </div>
+        </div>
+        <div style="background:#9f9" class="col-xs-3">
+          <button class="btn btn-secondary float-right" style="display:none"  id="seat1">Take seat</button>
+          <p id="seat1info"></p>
+          <div class="cards_box">
+            <img alt="card" id="seat1_card0" class="players_cards" src="imgs/gray_back.png">
+            <img alt="card" id="seat1_card1" class="players_cards" src="imgs/gray_back.png">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container-fluid'>
+    </div>
+      
+      <div class='row'>
+        <div class='col-xs-12 table-area'>
+          <div class='row'>
+            <div class='col-xs-12 picked-cards-area' id=picked-cards-area'>
+              <!--- Picked cards are placed here --->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div style="background:#f99" class="col-xs-3 col-xs-offset-3">
+          <div class="cards_box">
+            <img alt="card" id="seat3_card0" class="players_cards" src="imgs/gray_back.png">
+            <img alt="card" id="seat3_card1" class="players_cards" src="imgs/gray_back.png">
+            <button class="btn btn-secondary float-right" style="display:none" id="seat3">Take seat</button>
+            <p id="seat3info"></p>
+          </div>
+        </div>
+        <div style="background:#9f9" class="col-xs-3">
+          <div class="cards_box">
+            <img alt="card" id="seat2_card0" class="players_cards" src="imgs/gray_back.png">
+            <img alt="card" id="seat2_card1" class="players_cards" src="imgs/gray_back.png">
+          </div>
+          <button class="btn btn-secondary float-right" style="display:none" id="seat2">Take seat</button>
+          <p id="seat2info"></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3">
+          <p>Stack : <span id="stack"></span></p>
+          <div id="betSpan" style="display:none">
+            <button id="checkCall" >Call</button>
+            <form id="bet" action="">
+              <input type="range" min="2" max="200" value="2" class="slider" id="m">
+              <button id="raise">Raise</button>
+            </form>
+            <button id="fold">Fold</button>
+          </div>
+          <button id="standUp">Stand up next hand</button>
+        </div>
+      </div>
+    </div>
+    <chat-box></chat-box>
+    
+  </body>
+</html>
